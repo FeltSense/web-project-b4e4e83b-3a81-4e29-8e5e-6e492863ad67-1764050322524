@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html { scroll-behavior: smooth; }
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 text-white antialiased;
+  }
+}
+
+@layer components {
+  /* Energy Pulse Animation - Athletic Intensity */
+  .energy-pulse {
+    animation: energyPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes energyPulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Motion Blur Effect - Simulates Workout Intensity */
+  .motion-blur {
+    position: relative;
+  }
+  
+  .motion-blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10%;
+    right: -10%;
+    bottom: 0;
+    background: inherit;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .motion-blur:hover::before {
+    opacity: 0.6;
+    animation: motionBlur 0.6s ease-out;
+  }
+  
+  @keyframes motionBlur {
+    0% {
+      transform: translateX(-20px);
+    }
+    100% {
+      transform: translateX(20px);
+    }
+  }
+
+  /* Geometric Power Shapes */
+  .geometric-accent {
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+  }
+  
+  .geometric-slash {
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+  }
+
+  /* Bold Strike-Through Effect */
+  .strike-progress {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .strike-progress::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f97316, #facc15);
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .strike-progress:hover::after {
+    width: 100%;
+  }
+
+  /* Empowerment Glow */
+  .empowerment-glow {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3),
+                0 0 40px rgba(249, 115, 22, 0.2),
+                0 0 60px rgba(249, 115, 22, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .empowerment-glow:hover {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.5),
+                0 0 60px rgba(249, 115, 22, 0.3),
+                0 0 90px rgba(249, 115, 22, 0.2);
+  }
+
+  /* Hand-Drawn Motivational Underline */
+  .motivational-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .motivational-underline::after {
+    content: '';
+    position: absolute;
+    left: -2%;
+    bottom: -5px;
+    width: 104%;
+    height: 12px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 12'%3E%3Cpath d='M0,6 Q125,1 250,6 T500,6' stroke='%23facc15' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+    background-size: 100% 100%;
+    opacity: 0.8;
+  }
+
+  /* Progress Visualization Bar */
+  .progress-bar {
+    position: relative;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    overflow: visible;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f97316, #facc15, #f97316);
+    background-size: 200% 100%;
+    border-radius: 9999px;
+    animation: progressShine 2s linear infinite;
+    position: relative;
+  }
+  
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: #facc15;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.8);
+  }
+  
+  @keyframes progressShine {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  /* Athletic Card with Intensity */
+  .athletic-card {
+    @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-teal-600/30 rounded-lg overflow-hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .athletic-card:hover {
+    @apply border-orange-500/50;
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* Milestone Celebration Badge */
+  .milestone-badge {
+    @apply bg-gradient-to-r from-orange-500 to-yellow-400 text-slate-900 font-bold px-4 py-2 rounded-full;
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+    animation: celebrateBounce 1s ease-in-out infinite;
+  }
+  
+  @keyframes celebrateBounce {
+    0%, 100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(2deg);
+    }
+  }
+
+  /* Dynamic Button with Power */
+  .power-button {
+    @apply bg-orange-500 text-white font-bold px-8 py-4 rounded-lg relative overflow-hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .power-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(250, 204, 21, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+  
+  .power-button:hover {
+    @apply bg-yellow-400 text-slate-900 scale-105;
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+  }
+  
+  .power-button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Energy Grid Background */
+  .energy-grid {
+    background-image: 
+      linear-gradient(rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Intensity Gradient Text */
+  .intensity-text {
+    @apply bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: intensityShift 3s linear infinite;
+  }
+  
+  @keyframes intensityShift {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  /* Workout Stats Counter */
+  .stats-counter {
+    @apply text-5xl font-black text-orange-500;
+    text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+    animation: counterPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  @keyframes counterPop {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Diagonal Slash Divider */
+  .slash-divider {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom right, transparent 49.5%, #0d9488 49.5%, #0d9488 50.5%, transparent 50.5%);
+  }
+}
